@@ -1,6 +1,6 @@
-#include <Wire.h>
-#include <RTClib.h>
-#include <DHT.h>
+#include <Wire.h>   // Library I2C comunicacion
+#include <RTClib.h> // Library RTC
+#include <DHT.h>    // Library DHT
 
 #define DHTPIN 2
 #define DHTTYPE DHT11
@@ -13,35 +13,35 @@ void setup() {
   dht.begin();
   
   if(! rtc.begin()) {
-    Serial.println("Modulo RTC no encontrado");
+    Serial.println("RTC is not find");
   while(1);
     }
   rtc.adjust(DateTime(__DATE__,__TIME__));
 }
 
 void loop() {
-  DateTime fecha = rtc.now();
+  DateTime date = rtc.now();
   float h = dht.readHumidity();
   float t = dht.readTemperature();
   float f = dht.readTemperature(true);
   float hif = dht.computeHeatIndex(f, h);
   float hic = dht.computeHeatIndex(t, h, false);
    
-  Serial.print(fecha.day());
+  Serial.print(date.day());
   Serial.print("/");
-  Serial.print(fecha.month());
+  Serial.print(date.month());
   Serial.print("/");
-  Serial.print(fecha.year());
+  Serial.print(date.year());
   Serial.print(" ");
-  Serial.print(fecha.hour());
+  Serial.print(date.hour());
   Serial.print(":");
-  Serial.print(fecha.minute());
+  Serial.print(date.minute());
   Serial.print(":");
-  Serial.println(fecha.second());
+  Serial.println(date.second());
   
-  Serial.print("Temperatura: ");
+  Serial.print("Temperature: ");  // Write the text
   Serial.print(t);
   Serial.println(" ºC ");
   Serial.println(" ");
-  delay(900000);
+  delay(900000);                  // Wait 15 minutes
 }
