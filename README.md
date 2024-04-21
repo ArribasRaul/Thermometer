@@ -33,6 +33,3 @@ The `Thermometer_clock_serial` project combines temperature measurement using th
 1. Connect the DHT11 sensor and DS3231 RTC module to the Arduino board.
 2. Upload the `Thermometer_clock_serial` sketch to the Arduino.
 3. Monitor temperature, humidity, and timestamped data through the Arduino Serial Monitor.
-
-## License
-These projects are open-source and available under the [MIT License](LICENSE).
